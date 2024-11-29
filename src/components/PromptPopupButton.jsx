@@ -2,6 +2,8 @@ import {useState} from "react";
 import { Popover, Typography} from "@mui/material";
 import { TbPrompt } from "react-icons/tb";
 
+import styles from "./PromptPopupButton.module.css";
+
 const PromptPopupButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -17,8 +19,8 @@ const PromptPopupButton = () => {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <div>
-      <TbPrompt aria-describedby={id} variant="contained" onClick={handleClick} />
+    <div className={styles.promptPopupButton}>
+      <TbPrompt size={32} aria-describedby={id} variant="contained" onClick={handleClick} />
       <Popover
         id={id}
         open={open}
