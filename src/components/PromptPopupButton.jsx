@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Popover } from "@mui/material";
+import {Box, Popover} from "@mui/material";
 import { TbPrompt } from "react-icons/tb";
 
 import styles from "./PromptPopupButton.module.css";
@@ -32,7 +32,13 @@ const PromptPopupButton = () => {
           horizontal: 'left',
         }}
       >
-        <PromptManager />
+        <Box
+          sx={{
+            p: 2,
+            width: "600px",
+          }}>
+          <PromptManager />
+        </Box>
       </Popover>
     </div>
   );
