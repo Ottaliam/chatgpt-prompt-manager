@@ -1,8 +1,9 @@
-import {useState} from "react";
-import { Popover, Typography} from "@mui/material";
+import { useState } from "react";
+import { Popover } from "@mui/material";
 import { TbPrompt } from "react-icons/tb";
 
 import styles from "./PromptPopupButton.module.css";
+import PromptManager from "./PromptManager.jsx";
 
 const PromptPopupButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -27,11 +28,11 @@ const PromptPopupButton = () => {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'bottom',
+          vertical: 'top',
           horizontal: 'left',
         }}
       >
-        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+        <PromptManager />
       </Popover>
     </div>
   );
