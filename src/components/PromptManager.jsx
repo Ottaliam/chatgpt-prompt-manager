@@ -1,6 +1,6 @@
-import {useState} from "react";
-import {Box, Button, ButtonGroup, TextField, Typography} from "@mui/material";
-import { MdOutlineModeEditOutline, MdDelete, MdAdd, MdOutlineSave, MdCancel } from "react-icons/md";
+import { useState} from "react";
+import {Box, Button, ButtonGroup, Snackbar, TextField, Typography} from "@mui/material";
+import { MdOutlineModeEditOutline, MdDelete, MdAdd, MdOutlineSave, MdCancel, MdContentCopy  } from "react-icons/md";
 
 import styles from "./PromptManager.module.css";
 
@@ -9,6 +9,7 @@ const PromptManager = () => {
   const [newPrompt, setNewPrompt] = useState("");
   const [editingPromptIndex, setEditingPromptIndex] = useState(null);
   const [editingPrompt, setEditingPrompt] = useState("");
+  const [snackOpen, setSnackOpen] = useState(false);
 
   const addPrompt = () => {
     if (newPrompt.length > 0) {
@@ -110,6 +111,12 @@ const PromptManager = () => {
                   </Typography>
                 </Box>
                 <ButtonGroup variant="outlined">
+                  <Button onClick={() => {
+                    navigator.clipboard.writeText(prompt);
+                    setSnackOpen(true);
+                  }}>
+                    <MdContentCopy />
+                  </Button>
                   <Button onClick={() => startEditingPrompt(index)}>
                     <MdOutlineModeEditOutline />
                   </Button>
@@ -122,6 +129,13 @@ const PromptManager = () => {
           </li>
         ))}
       </ul>
+
+      <Snackbar
+        open={snackOpen}
+        autoHideDuration={2000}
+        onClose={() => setSnackOpen(false)}
+        message="Copied to clipboard!"
+      />
     </div>
   );
 };
