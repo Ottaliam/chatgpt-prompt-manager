@@ -5,18 +5,19 @@ import PromptInput from "./PromptInput.jsx";
 import PromptList from "./PromptList.jsx";
 
 /**
- * Manages a list of prompts, enabling addition, editing, removal, and copying of prompt entries.
+ * Display and manage a list of prompts,
+ * enabling addition, editing, removal, and copying of prompt entries.
  *
  * @component
  *
- * @returns {React.Component} The rendered component.
+ * @returns {React.Component} - The rendered component.
  */
 const PromptManager = () => {
   const [promptsList, setPromptsList] = useState(JSON.parse(localStorage.getItem("cpm.prompts")) || ["test1", "test2"]);
   const [snackOpen, setSnackOpen] = useState(false);
 
   /**
-   * Adds a new prompt to the prompts list and updates local storage.
+   * Adds a new prompt to the `promptsList` and updates `localStorage`.
    *
    * @param {string} newPrompt - The new prompt to add.
    */
@@ -29,7 +30,7 @@ const PromptManager = () => {
   };
 
   /**
-   * Edits an existing prompt in the prompts list and updates local storage.
+   * Edits an existing prompt in the `promptsList` and updates `localStorage`.
    *
    * @param {number} index - The index of the prompt to edit.
    * @param {string} editedPrompt - The new value for the prompt.
@@ -43,12 +44,14 @@ const PromptManager = () => {
   };
 
   /**
-   * Removes a prompt from the prompts list.
+   * Removes a prompt from the prompts list and updates `localStorage`.
    *
    * @param {number} index - The index of the prompt to remove.
    */
   const removePrompt = (index) => {
-    setPromptsList(promptsList.filter((prompt, promptIndex) => promptIndex !== index));
+    const updatedPromptsList = promptsList.filter((prompt, promptIndex) => promptIndex !== index);
+    setPromptsList(updatedPromptsList);
+    localStorage.setItem("cpm.prompts", JSON.stringify(updatedPromptsList));
   };
 
   /**

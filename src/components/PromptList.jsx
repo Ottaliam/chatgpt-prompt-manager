@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styles from "./PromptManager.module.css";
 
 /**
- * A component that renders a list of prompts in a styled unordered list.
+ * Display a list of prompts in a styled unordered list.
+ * Each item of the list is a `PromptItem`.
  *
  * @component
  *
@@ -13,7 +14,7 @@ import styles from "./PromptManager.module.css";
  * @param {Function} props.onDelete - Callback to handle deletion of a prompt.
  * @param {Function} props.onCopy - Callback to handle copying of a prompt.
  *
- * @returns {React.Component} The rendered component.
+ * @returns {React.Component} - The rendered component.
  */
 const PromptList = ({ promptsList, onEdit, onDelete, onCopy }) => {
   return (

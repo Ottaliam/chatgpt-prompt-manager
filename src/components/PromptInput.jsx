@@ -6,15 +6,15 @@ import styles from "./PromptManager.module.css";
 import PropTypes from 'prop-types';
 
 /**
- * A component for inputting prompts, with a text field and a button
- * to add the entered prompt.
+ * A row in `PromptManager` for inputting prompts,
+ * with a text field and a button to add the entered prompt.
  *
  * @component
  *
  * @param {Object} props - The component's props
  * @param {Function} props.onAddPrompt - Callback function to handle the addition of a new prompt.
  *
- * @returns {React.Component} The rendered component.
+ * @returns {React.Component} - The rendered component.
  */
 const PromptInput = ({ onAddPrompt }) => {
   const [newPrompt, setNewPrompt] = useState("");

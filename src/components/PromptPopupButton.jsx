@@ -6,12 +6,12 @@ import styles from "./PromptPopupButton.module.css";
 import PromptManager from "./PromptManager.jsx";
 
 /**
- * `PromptPopupButton` is a React functional component that renders a button with a popover.
+ * A button with a popover.
  * The popover contains the `PromptManager` component.
  *
  * @component
  *
- * @returns {React.Component} The rendered component.
+ * @returns {React.Component} - The rendered component.
  */
 const PromptPopupButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -36,14 +36,14 @@ const PromptPopupButton = () => {
 
   /**
    * @const {boolean}
-   * Controls whether the popover is open or not
+   * Controls whether the popover is open or not.
    */
   const open = Boolean(anchorEl);
 
   /**
-   * @const {(string)}
-   * The id of the opened popover
-   * If the popover is not open, set to `undefined`
+   * @const {string}
+   * The id of the opened popover.
+   * If the popover is not open, set to `undefined`.
    */
   const id = open ? 'simple-popover' : undefined;
 

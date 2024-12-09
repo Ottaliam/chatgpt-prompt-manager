@@ -6,7 +6,8 @@ import styles from "./PromptManager.module.css";
 import PropTypes from 'prop-types';
 
 /**
- * Represents an item in the PromptList.
+ * A row in `PromptList` for displaying prompts,
+ * with buttons that copy, edit, and remove the prompt.
  *
  * @component
  *
@@ -17,7 +18,7 @@ import PropTypes from 'prop-types';
  * @param {Function} props.onDelete - Callback to handle deletion of a prompt.
  * @param {Function} props.onCopy - Callback to handle copying of a prompt.
  *
- * @returns {React.Component} The rendered component.
+ * @returns {React.Component} - The rendered component.
  */
 const PromptItem = ({ prompt, index, onEdit, onDelete, onCopy }) => {
   const [isEditing, setIsEditing] = useState(false);
