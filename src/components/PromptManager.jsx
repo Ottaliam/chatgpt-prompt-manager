@@ -4,10 +4,22 @@ import { Snackbar } from "@mui/material";
 import PromptInput from "./PromptInput.jsx";
 import PromptList from "./PromptList.jsx";
 
+/**
+ * Manages a list of prompts, enabling addition, editing, removal, and copying of prompt entries.
+ *
+ * @component
+ *
+ * @returns {React.Component} The rendered component.
+ */
 const PromptManager = () => {
   const [promptsList, setPromptsList] = useState(JSON.parse(localStorage.getItem("cpm.prompts")) || ["test1", "test2"]);
   const [snackOpen, setSnackOpen] = useState(false);
 
+  /**
+   * Adds a new prompt to the prompts list and updates local storage.
+   *
+   * @param {string} newPrompt - The new prompt to add.
+   */
   const addPrompt = (newPrompt) => {
     if (newPrompt.length > 0) {
       const updatedPromptsList = [...promptsList, newPrompt];
@@ -16,6 +28,12 @@ const PromptManager = () => {
     }
   };
 
+  /**
+   * Edits an existing prompt in the prompts list and updates local storage.
+   *
+   * @param {number} index - The index of the prompt to edit.
+   * @param {string} editedPrompt - The new value for the prompt.
+   */
   const editPrompt = (index, editedPrompt) => {
     const updatedPromptsList = promptsList.map((prompt, promptIndex) =>
       promptIndex === index ? editedPrompt : prompt
@@ -24,10 +42,20 @@ const PromptManager = () => {
     localStorage.setItem("cpm.prompts", JSON.stringify(updatedPromptsList));
   };
 
+  /**
+   * Removes a prompt from the prompts list.
+   *
+   * @param {number} index - The index of the prompt to remove.
+   */
   const removePrompt = (index) => {
     setPromptsList(promptsList.filter((prompt, promptIndex) => promptIndex !== index));
   };
 
+  /**
+   * Copies a prompt to the clipboard and shows a Snackbar notification.
+   *
+   * @param {string} prompt - The prompt text to copy.
+   */
   const copyToClipboard = (prompt) => {
     navigator.clipboard.writeText(prompt);
     setSnackOpen(true);

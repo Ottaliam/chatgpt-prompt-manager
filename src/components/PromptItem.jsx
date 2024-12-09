@@ -5,19 +5,42 @@ import styles from "./PromptManager.module.css";
 
 import PropTypes from 'prop-types';
 
+/**
+ * Represents an item in the PromptList.
+ *
+ * @component
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.prompt - The prompt text to display and edit.
+ * @param {number} props.index - The index of the prompt in the list.
+ * @param {Function} props.onEdit - Callback to handle the editing of a prompt.
+ * @param {Function} props.onDelete - Callback to handle deletion of a prompt.
+ * @param {Function} props.onCopy - Callback to handle copying of a prompt.
+ *
+ * @returns {React.Component} The rendered component.
+ */
 const PromptItem = ({ prompt, index, onEdit, onDelete, onCopy }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingPrompt, setEditingPrompt] = useState(prompt);
 
+  /**
+   * Enables edit mode.
+   */
   const handleEditClick = () => {
     setIsEditing(true);
   };
 
+  /**
+   * Saves changes and exits edit mode.
+   */
   const handleSaveClick = () => {
     onEdit(index, editingPrompt);
     setIsEditing(false);
   };
 
+  /**
+   * Cancels editing, discards changes and exits edit mode.
+   */
   const handleCancelClick = () => {
     setIsEditing(false);
     setEditingPrompt(prompt);

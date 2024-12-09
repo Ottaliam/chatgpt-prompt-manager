@@ -10,7 +10,8 @@ import PromptManager from "./PromptManager.jsx";
  * The popover contains the `PromptManager` component.
  *
  * @component
- * @returns {JSX.Element} The rendered `PromptPopupButton` component.
+ *
+ * @returns {React.Component} The rendered component.
  */
 const PromptPopupButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -38,6 +39,7 @@ const PromptPopupButton = () => {
    * Controls whether the popover is open or not
    */
   const open = Boolean(anchorEl);
+
   /**
    * @const {(string)}
    * The id of the opened popover
