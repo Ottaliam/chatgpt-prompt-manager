@@ -6,6 +6,5 @@ import PromptManager from "./components/PromptManager.jsx";
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <PromptManager />
-    {/*<App />*/}
   </StrictMode>,
 )
